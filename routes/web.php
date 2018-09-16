@@ -15,14 +15,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-// Login
-$router->post('auth/login', ['uses' => 'AuthController@authenticate']);
-
-//Register new user
-$router->post('auth/register', ['uses' => 'AuthController@addUser']);
-
 // Prefix all endpoint with api
 $router->group(['prefix' => 'api'], function () use ($router) {
+    
+// Login
+    $router->post('auth/login', ['uses' => 'AuthController@authenticate']);
+
+//Register new user
+    $router->post('auth/register', ['uses' => 'AuthController@addUser']);
     /**
      * Show a list of all books.
      */

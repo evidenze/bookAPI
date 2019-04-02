@@ -17,41 +17,39 @@ $router->get('/', function () use ($router) {
 
 // Prefix all endpoint with api
 $router->group(['prefix' => 'api'], function () use ($router) {
-    
+
 // Login
     $router->post('auth/login', ['uses' => 'AuthController@authenticate']);
 
-//Register new user
+    //Register new user
     $router->post('auth/register', ['uses' => 'AuthController@addUser']);
-    /**
+    /*
      * Show a list of all books.
      */
     $router->get('books', ['uses' => 'BookController@showAllBooks']);
 
-    /**
+    /*
      * Show a specified book.
      */
     $router->get('books/{id}', ['uses' => 'BookController@showOneBook']);
 
-    /**
+    /*
      * Create a new book.
      */
     $router->post('books', ['middleware' => 'jwt.auth', 'uses' => 'BookController@create']);
 
-    /**
+    /*
      * Delete a specified book.
      */
     $router->delete('books/{id}', ['middleware' => 'jwt.auth', 'uses' => 'BookController@delete']);
 
-    /**
+    /*
      * Update a specified book.
      */
     $router->put('books/{id}', ['middleware' => 'jwt.auth', 'uses' => 'BookController@update']);
 
-    /**
+    /*
      * Rate a specified book.
      */
     $router->post('books/{id}/rate', ['middleware' => 'jwt.auth', 'uses' => 'BookController@rateABook']);
-
 });
-

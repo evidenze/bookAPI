@@ -16,24 +16,24 @@ use Illuminate\Support\Facades\Hash;
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->userName,
-        'email' => $faker->unique()->email,
+        'email'    => $faker->unique()->email,
         'password' => Hash::make('12345'),
     ];
 });
 
 $factory->define(App\Book::class, function (Faker\Generator $faker) {
     return [
-        'book_title' => $faker->catchPhrase,
-        'year_published' => $faker->year($max = 'now'),
-        'isbn' => $faker->isbn13,
+        'book_title'       => $faker->catchPhrase,
+        'year_published'   => $faker->year($max = 'now'),
+        'isbn'             => $faker->isbn13,
         'author_firstname' => $faker->firstName,
-        'author_lastname' => $faker->LastName,
+        'author_lastname'  => $faker->LastName,
     ];
 });
 
 $factory->define(App\Rating::class, function (Faker\Generator $faker) {
     return [
-        'value' => $faker->randomDigit,
+        'value'   => $faker->randomDigit,
         'book_id' => $faker->randomDigitNotNull,
     ];
 });
